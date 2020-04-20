@@ -29,13 +29,6 @@ namespace LemonadeStand
             //Console.WriteLine(condition + " " + temperature);
         }
 
-        //private void DisplayWeatherConditions(List<string> weatherConditions) //don't need
-        //{
-        //    foreach (string weatherCondition in weatherConditions)
-        //    {
-        //        Console.WriteLine(weatherCondition);
-        //    }
-        //}
         private void PopulateWeatherConditions()
         {
             weatherConditions.Add("Sunny");
