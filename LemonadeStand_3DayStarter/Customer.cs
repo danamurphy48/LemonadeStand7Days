@@ -8,11 +8,33 @@ namespace LemonadeStand
 {
     class Customer
     {
-        //member variables
+        //member variables (HAS A)
         private List<string> names;
         public string name;
-        //constructor
+        
+        //constructor (SPAWNER)
+        public Customer(string name)
+        {
+            this.name = name;
+            names = new List<string>();
+            PopulateCustomerNames();
+        }
+        //member methods (CAN DO)
+        public void PopulateCustomerNames()
+        {
+            names.Add("Marco Polo");
+            names.Add("Princess Leia");
+            names.Add("Amelia Earhart");
+            names.Add("Darth Siddius");
+            names.Add("Obi Wan Kenobi");
+            names.Add("Padme Amidala");
+            names.Add("Bill Gates");
+            names.Add("Melinda Gates");
+        }
+        public bool BuyLemonade()
+        {
 
-        //member methods
+            return true;
+        }
     }
 }

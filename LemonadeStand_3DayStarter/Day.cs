@@ -13,15 +13,27 @@ namespace LemonadeStand
         public List<Customer> customers;
 
         //constructor
-
-        //member methods
-        public void CurrentWeather()
+        public Day()
         {
-
+            //DisplayCurrentWeather();
+            weather = new Weather();
         }
+        //member methods
+        
         public void Forecast()
         {
 
         }
+        public void CustomersPurchaseLemonade(Player player, double priceOfCup)
+        {
+            foreach(Customer customer in customers)
+            {
+                if (customer.BuyLemonade())
+                {
+                    player.wallet.Money += priceOfCup;
+                }
+            }
+        }
+        //weather algorithm
     }
 }
