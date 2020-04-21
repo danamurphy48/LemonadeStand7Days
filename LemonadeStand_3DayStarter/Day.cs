@@ -35,6 +35,40 @@ namespace LemonadeStand
         {
 
         }
+        public void CreateCustomers(double pricePerCup)
+        {
+
+        }
+        public void PopulateCustomers()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                Customer customer = new Customer();
+                customers.Add(customer);
+            }
+        }
+        public void FilterCustomers()
+        {
+
+        }
+        public void FilterCustomersByPrice(double pricePerCup)
+        {
+            int numberOfCustomers = 0;
+            if (pricePerCup > 1.00)
+            {
+                numberOfCustomers = 30;
+                
+            }
+            else if (pricePerCup <= 1.00)
+            {
+                numberOfCustomers = 50;
+            }
+            
+        }
+        public void FilterCustomersByWeatherCondition()
+        {
+
+        }
         public void CustomersPurchaseLemonade(Player player, double pricePerCup, Weather weather) //use a switch case or if else like RPSLP
         {
             foreach(Customer customer in customers)

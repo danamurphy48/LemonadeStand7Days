@@ -11,9 +11,10 @@ namespace LemonadeStand
         //member variables (HAS A)
         private List<string> names;
         public string name;
+
         
         //constructor (SPAWNER)
-        public Customer(string name)
+        public Customer()
         {
             this.name = name;
             names = new List<string>();
@@ -42,16 +43,31 @@ namespace LemonadeStand
 
         }
         public bool ChooseToBuy(Player player, double pricePerCup, Weather weather) //make variables of pricing, temp, and condition? to control customer flow
-        {
+        {//while loop?
             int numberOfCustomers = 100;
             bool customerBuy = true;
-            if (pricePerCup > .75)
+            if (pricePerCup > 1.00)
             {
                 numberOfCustomers -= 100;
-                return false;
+                return false;//????????
             }
-            else if (pricePerCup >= .50 && (weather.temperature <= 59 && (weather.condition == "Cloudy") || weather.condition == "Sunny"))
+            else if (pricePerCup <= 1.00)
             {
+                numberOfCustomers -= 95;
+                return true;
+            }
+            else if (pricePerCup <= .90)
+            {
+                numberOfCustomers -= 90;
+                return true;
+            }
+            else if (pricePerCup <= 80)
+            {
+                numberOfCustomers -= 75;
+            }
+            else if (pricePerCup >= .50 && (weather.temperature <= 59 && (weather.condition == "Cloudy")))
+            {
+                result = numberOfCustomers * (pricePerCup.bracketPricePerCup) * (weather.temperature.bracketTemperature) * (weather.condition.bracketWeatherCondition);
                 return false;
             }
             return true;
