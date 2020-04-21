@@ -13,6 +13,7 @@ namespace LemonadeStand
         public List<Customer> customers;
         //public List<int> dayOfGame;
         private int dayOfGame;
+        public int numberOfCustomers; //necessary or can I take out of customers List?
 
         //constructor
         public Day()
@@ -22,6 +23,7 @@ namespace LemonadeStand
             customers = new List<Customer>();
             //dayOfGame = new List<int>();
             DayOfGame();
+            numberOfCustomers = 100;
         }
         //member methods
         public void DayOfGame()
@@ -65,9 +67,73 @@ namespace LemonadeStand
             }
             
         }
-        public void FilterCustomersByWeatherCondition()
+        public void FilterCustomersByWeatherCondition(Weather weather) //make a bool?
         {
+            int numberOfCustomers = 100;
+            int currentCustomerCount;
+            int maximumCustomerCount;
+            if (weather.condition == "Sunny")
+            {
+                maximumCustomerCount = 100;
+                currentCustomerCount = 100;
+                numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
 
+            }
+            else if (weather.condition == "Cloudy")
+            {
+                maximumCustomerCount = 100;
+                currentCustomerCount = 75;
+                numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+            }
+            else if (weather.condition == "Rainy")
+            {
+                maximumCustomerCount = 100;
+                currentCustomerCount = 50;
+                numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+            }
+        }
+        public void FilterCustomersByWeatherTemperature(Weather weather, int numnberOfCustomers)//from weather condition filter
+        {
+            if (weather.temperature <= 59) //want 40% of above customer count
+            {
+                
+                numberOfCustomers = (currentCustomerCount / maximumCustomerCount);
+                
+            }
+        }
+        public bool ChooseToBuy(Player player, double pricePerCup, Weather weather) //make variables of pricing, temp, and condition? to control customer flow
+        {//while loop? should this be public void?
+            int numberOfCustomers = 100;
+            bool customerBuy = true;
+            if (pricePerCup > 1.00)
+            {
+                numberOfCustomers -= 100;
+            }
+            else if (pricePerCup <= 1.00)
+            {
+                numberOfCustomers -= 95;
+            }
+            else if (pricePerCup <= .90)
+            {
+                numberOfCustomers -= 90;
+            }
+            else if (pricePerCup <= .80)
+            {
+                numberOfCustomers -= 75;
+            }
+            else if (pricePerCup <= .70)
+            {
+                numberOfCustomers -= 50;
+            }
+            else if (pricePerCup <= .60)
+            {
+                numberOfCustomers -= 25;
+            }
+            else if (pricePerCup <= .50)
+            {
+                numberOfCustomers = 100;
+            }
+            return true;
         }
         public void CustomersPurchaseLemonade(Player player, double pricePerCup, Weather weather) //use a switch case or if else like RPSLP
         {
@@ -78,10 +144,10 @@ namespace LemonadeStand
                     player.wallet.Money += pricePerCup;
                 }
             }
-            if (weather.condition == "Cloudy")
-            {
-                //double customer /= 3 customer;
-            }
+            //if (weather.condition == "Cloudy")
+            //{
+            //    //double customer /= 3 customer;
+            //}
         }
         //weather algorithm
     }

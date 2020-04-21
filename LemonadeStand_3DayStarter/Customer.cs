@@ -16,12 +16,12 @@ namespace LemonadeStand
         //constructor (SPAWNER)
         public Customer()
         {
-            this.name = name;
+            //this.name = name;
             names = new List<string>();
             PopulateCustomerNames();
         }
         //member methods (CAN DO)
-        public void PopulateCustomerNames()
+        public void PopulateCustomerNames() //unnecessary?
         {
             names.Add("Marco Polo");
             names.Add("Princess Leia");
@@ -37,41 +37,24 @@ namespace LemonadeStand
             //    names.Add(name);
             //}
         }
+        //have customer preferences determined by randomization
         public bool BuyLemonade()
         {
             return true;
+        }
 
-        }
-        public bool ChooseToBuy(Player player, double pricePerCup, Weather weather) //make variables of pricing, temp, and condition? to control customer flow
-        {//while loop?
-            int numberOfCustomers = 100;
-            bool customerBuy = true;
-            if (pricePerCup > 1.00)
-            {
-                numberOfCustomers -= 100;
-                return false;//????????
-            }
-            else if (pricePerCup <= 1.00)
-            {
-                numberOfCustomers -= 95;
-                return true;
-            }
-            else if (pricePerCup <= .90)
-            {
-                numberOfCustomers -= 90;
-                return true;
-            }
-            else if (pricePerCup <= 80)
-            {
-                numberOfCustomers -= 75;
-            }
-            else if (pricePerCup >= .50 && (weather.temperature <= 59 && (weather.condition == "Cloudy")))
-            {
-                result = numberOfCustomers * (pricePerCup.bracketPricePerCup) * (weather.temperature.bracketTemperature) * (weather.condition.bracketWeatherCondition);
-                return false;
-            }
-            return true;
-        }
+
+
+
+
+            //else if (pricePerCup >= .50 && (weather.temperature <= 59 && (weather.condition == "Cloudy")))
+            //{
+            //    result = numberOfCustomers * (pricePerCup.bracketPricePerCup) * (weather.temperature.bracketTemperature) * (weather.condition.bracketWeatherCondition);
+            //    return false;   // thought with bracket is to input % customers will consider purchasing factored by price bracket
+            //    //thought to have weather brackets be % customers that will consider purchasing
+            //}
+            //return true;
+
         //public void Junk()
         //{
         //    foreach (Customer customer in customers) //only want 1/4 of customers to purchase at conditions below

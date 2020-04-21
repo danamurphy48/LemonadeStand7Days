@@ -15,7 +15,12 @@ namespace LemonadeStand
         public double pricePerCup;
 
         //constructor
+        public Recipe()
+        {
 
+        }
         //member methods
+
+        //recipe limit to 9 ingredients
     }
 }
