@@ -12,7 +12,8 @@ namespace LemonadeStand
         public int amountOfLemons;
         public int amountOfSugarCubes;
         public int amountOfIceCubes;
-        public double pricePerCup;  //shouldn't this be int amountOfCups?
+        public int amountOfCups;
+        public double pricePerCup; 
 
         //constructor (SPAWNER)
         public Recipe()
@@ -20,10 +21,23 @@ namespace LemonadeStand
             amountOfIceCubes = 3;
             amountOfLemons = 3;
             amountOfSugarCubes = 3;
+            amountOfCups = 10;
             pricePerCup = .75;
         }
         //member methods (CAN DO)
-        //ask user to set price per cup and amount of ingredients per pitcher?
+        public void AskRecipe()
+        {
+            Console.WriteLine("Please choose how many sugar cubes you want in a pitcher:");
+            int amountOfSugarCubes = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please choose how many lemons you want in a pitcher:");
+            int amountOfLemons = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please choose how much ice you want in a pitcher:");
+            int amountOfIceCubes = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please choose the price per cup of lemonade:");
+            double pricePerCup = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("One pitcher pours 10 cups.");
+        }
 
 
     }

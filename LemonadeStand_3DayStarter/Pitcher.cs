@@ -17,7 +17,7 @@ namespace LemonadeStand
         public Pitcher()
         {
             cupsLeftInPitcher = 10;
-
+            //pitcher ingredient amount necessary?
             Console.WriteLine("The pitcher cannot exceed 9 ingredients, but can be any combination of Ice Cubes, Sugar Cubes, and Lemons.");
             Console.WriteLine("How many pitchers do you want to make?");
             int userInput = Convert.ToInt32(Console.ReadLine());
@@ -38,19 +38,13 @@ namespace LemonadeStand
             {
                 player.inventory.iceCubes.RemoveRange(0, recipe.amountOfIceCubes);
             }
-            //if(player.inventory.cups.Count >= recipe.pricePerCup)
-            //{
-            //    player.inventory.cups.RemoveRange(0, recipe.pricePerCup);
-            //}
-        }
-
-        public void PourLemonadeIntoCup(Player player, Inventory inventory)
-        {
-            if (player.inventory.cups.Count >= cupsLeftInPitcher)
+            if (player.inventory.cups.Count >= recipe.amountOfCups)
             {
-                player.inventory.cups.RemoveRange(0, cupsLeftInPitcher);
+                player.inventory.cups.RemoveRange(0, recipe.amountOfCups);
             }
         }
+
+
         //public void PourPitcher()
         //{
         //    for (int i = 10; i > 0; i--)

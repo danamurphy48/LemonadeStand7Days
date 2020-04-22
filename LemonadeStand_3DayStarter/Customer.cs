@@ -11,8 +11,8 @@ namespace LemonadeStand
         //member variables (HAS A)
         private List<string> names;
         public string name;
+        public int buyingMultiplier;
 
-        
         //constructor (SPAWNER)
         public Customer()
         {
@@ -31,24 +31,21 @@ namespace LemonadeStand
             //names.Add("Padme Amidala");
             //names.Add("Bill Gates");
             //names.Add("Melinda Gates");
-            for (int i = 0; i < 100; i++) //can you just add names like customer1++: this does work
+            for (int i = 0; i < 100; i++) 
             {
-                name = "customer" + i;  //probably don't need the +i because they're indexed
+                name = "customer" + i;
                 names.Add(name);
             }
         }
         //have customer preferences determined by randomization
-        public bool BuyLemonade()
+        public void BuyLemonade(Player player, Pitcher pitcher, double pricePerCup)
         {
+            pitcher.cupsLeftInPitcher--;
+            player.wallet.Money += pricePerCup;            
+        }
             ////if a customer buys lemonade then the following needs to happen:
-            //pitcher.cupsLeftInPitcher--;
-            //player.wallet.Money += pricePerCup; this logic happens in Day
             ////pitcher amountofcups decreases by one
             ////wallet cash amount increases by pricepercup
-            return true;
-        }
-
-
 
 
 

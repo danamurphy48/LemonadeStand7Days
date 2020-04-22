@@ -13,7 +13,13 @@ namespace LemonadeStand
         public List<Customer> customers;
         //public List<int> dayOfGame;
         private int dayOfGame;
-        //public int numberOfCustomers; //necessary or can I take out of customers List?
+        public int numberOfCustomers; //necessary or can I take out of customers List?
+        private int conditionPreference;
+        private int customerConditionPreference;
+        private int temperaturePreference;
+        private int customerTemperaturePreference;
+        private int conditionMultiplier;
+        private int temperatureMultiplier;
         //private int currentCustomerCount;
         //private int maximumCustomerCount;
         Random random = new Random();
@@ -26,7 +32,7 @@ namespace LemonadeStand
             customers = new List<Customer>();
             //dayOfGame = new List<int>();
             DayOfGame();
-            //numberOfCustomers = 100;
+            numberOfCustomers = 100;
         }
         //member methods
         public void DayOfGame()
@@ -46,7 +52,7 @@ namespace LemonadeStand
         }
         public void PopulateCustomers()
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < numberOfCustomers; i++)
             {
                 Customer customer = new Customer();
                 customers.Add(customer);
@@ -58,17 +64,21 @@ namespace LemonadeStand
             //int maximumCustomerCount;
             //numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;    //seems unnecessary
         }
-        public bool FilterCustomerPreference(Weather weather, Customer customer, double pricePerCup)
+        public bool FilterCustomerPreference(Weather weather, Customer customer)
         {         
             Random random = new Random();
             int randomWeather = random.Next(0, 2);
             customer.conditionPreference = weather.condition[randomWeather];
-            int buying = conditionMultiplier + priceMultiplier + temperatureMultiplier;
+            customer.temperaturePreference = weather.temperature[randomWeather];
+
+            customer.buyingMultiplier = conditionMultiplier + temperatureMultiplier;
             
-            if(buying >= 4)
+            //foreach(Customer customer in customers)
+            if(customer.buyingMultiplier >= 4)
                 {
-                    return true;
+                    customer.BuyLemonade();
                 }
+
             if(weather.condition == "Sunny" && customer.conditionPreference == "Sunny")
                 {
                     conditionMultiplier = 3;
@@ -81,31 +91,24 @@ namespace LemonadeStand
                 {
                     conditionMultiplier = 1;
                 }
-            if(customer.pricePreference <= pricePerCup)
-                {
-                    priceMultipler = 2;
-                }
-            else
-                {
-                    priceMultiplier = 0;
-                }
-            return priceMultiplier + conditionMultiplier + temperatureMultiplier;
+ 
+            return conditionMultiplier + temperatureMultiplier;
         }
 
-        public void FilterCustomersByPrice(double pricePerCup)
-        {
-            int numberOfCustomers = 0;
-            if (pricePerCup > 1.00)
-            {
-                numberOfCustomers = 30;
+        //public void FilterCustomersByPrice(double pricePerCup)
+        //{
+        //    int numberOfCustomers = 0;
+        //    if (pricePerCup > 1.00)
+        //    {
+        //        numberOfCustomers = 30;
                 
-            }
-            else if (pricePerCup <= 1.00)
-            {
-                numberOfCustomers = 50;
-            }
+        //    }
+        //    else if (pricePerCup <= 1.00)
+        //    {
+        //        numberOfCustomers = 50;
+        //    }
             
-        }
+        //}
         public void FilterCustomersByWeatherCondition(Weather weather) //make a bool?  Fix
         {
             int numberOfCustomers = 100;
@@ -140,13 +143,14 @@ namespace LemonadeStand
                 
             }
         }
-        public bool ChooseToBuy(Player player, double pricePerCup, Weather weather) //make variables of pricing, temp, and condition? to control customer flow
+        public void ChooseToBuy(Player player, double pricePerCup, Weather weather) //make variables of pricing, temp, and condition? to control customer flow
         {//while loop? should this be public void?
-            int numberOfCustomers = 100;
+            numberOfCustomers = 100;
             bool customerBuy = true;
             if (pricePerCup > 1.00)
             {
                 numberOfCustomers -= 100;
+                customerBuy = false;
             }
             else if (pricePerCup <= 1.00)
             {
@@ -172,23 +176,23 @@ namespace LemonadeStand
             {
                 numberOfCustomers = 100;
             }
-            return true;
         }
         public void CustomersPurchaseLemonade(Player player, double pricePerCup, Pitcher pitcher, Weather weather) //use a switch case or if else like RPSLP
         {
-            foreach(Customer customer in customers)
+            //Two paths you can take:
+            //1. customers represents the filtered down customers who will buy (no need for conditional here, just have them buy)
+            //2. customers represents all customers for the day. Only customers with member variable willBuy = true will actually buy lemonade
+            // you can achieve this by if(buying >= 4) { customer willBuy = true} (you will need this in a loop to iterate over all customers
+            foreach (Customer customer in customers)
             {
-                if (customer.BuyLemonade())
+                customer.buyingMultiplier = conditionMultiplier + temperatureMultiplier;
+                if (customer.buyingMultiplier >= 4)
                 {
-                    player.wallet.Money += pricePerCup;
-                    pitcher.cupsLeftInPitcher--; //or does this need to be -- to cup inventory
+                    customer.BuyLemonade(player, pitcher, pricePerCup);
                 }
+                
+                
             }
-            //if (weather.condition == "Cloudy")
-            //{
-            //    //double customer /= 3 customer;
-            //}
         }
-        //weather algorithm
     }
 }
