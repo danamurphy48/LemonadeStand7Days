@@ -12,6 +12,7 @@ namespace LemonadeStand
         private Player player;
         private List<Day> days;
         private int currentDay;
+        private Store store;
 
         //constructor
         public Game()
@@ -19,13 +20,14 @@ namespace LemonadeStand
             player = new Player();
             days = new List<Day>();
             currentDay = 0;
+            store = new Store();
         }
         //member variables
         public void RunGame()
         {
             DisplayRules();
             player.PickName();
-            player.GoToStore();
+            GoToStore();
         }
         public void DisplayRules()
         {
@@ -35,6 +37,17 @@ namespace LemonadeStand
             Console.WriteLine("If the price is over $1.00 no customers will buy lemonade regardless of the weather.");
             Console.WriteLine("If the weather is poor, then fewer customers will be interested purchasing lemonade.");
             Console.WriteLine("At the end of each day, you will see your gross and net income.");
+        }
+        public void GoToStore()
+        {
+            Console.WriteLine("Please purchase ingredients and cups to start your lemonade stand.");
+            Console.WriteLine(player.wallet);
+            store.SellLemons(player);
+
+        }
+        public void DisplayEarnings()
+        {
+
         }
     }
 }

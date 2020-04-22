@@ -20,6 +20,7 @@ namespace LemonadeStand
         private int customerTemperaturePreference;
         private int conditionMultiplier;
         private int temperatureMultiplier;
+        public Player player;
         //private int currentCustomerCount;
         //private int maximumCustomerCount;
         Random random = new Random();
@@ -75,10 +76,10 @@ namespace LemonadeStand
             //foreach(Customer customer in customers)
             if(customer.buyingMultiplier >= 4)
             {
-                customer.BuyLemonade(Player player; Pitcher pitcher; double pricePerCup);// error bc BuyLemonade has parameters and currently not supplying args when calling method
+                customer.BuyLemonade(Player player; Pitcher pitcher; double pricePerCup);
             }
 
-            if(weather.condition == "Sunny" && customer.conditionPreference == "Sunny")
+            if(weather.condition == "Sunny" && customer.conditionPreference.ToString() == "Sunny")
             {
                 conditionMultiplier = 3;
             }
@@ -92,11 +93,11 @@ namespace LemonadeStand
             }
             return conditionMultiplier + temperatureMultiplier;
         }
-        public void FilterCustomersByTemperature(Weather weather, Customer customer)   //could I do customer.SetTemperature();
+        public int FilterCustomersByTemperature(Weather weather, Customer customer)   //could I do customer.SetTemperature();
         {
             Random random = new Random();
             int randomWeather = random.Next(55, 100);
-            customer.temperaturePreference = weather.temperature[randomWeather];
+            customer.temperaturePreference = randomWeather;
 
             if (weather.temperature <=59 && customer.temperaturePreference <=59)
             {
@@ -119,6 +120,7 @@ namespace LemonadeStand
             {
                 temperatureMultiplier = 0;
             }
+            return temperatureMultiplier;
         }
 
 

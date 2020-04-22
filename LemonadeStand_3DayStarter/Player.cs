@@ -14,7 +14,7 @@ namespace LemonadeStand
         public Wallet wallet;
         public Recipe recipe;
         public Pitcher pitcher;
-        public Store store;
+
 
 
         // constructor (SPAWNER)
@@ -22,7 +22,9 @@ namespace LemonadeStand
         {
             inventory = new Inventory();
             wallet = new Wallet();
-            store = new Store();
+            recipe = new Recipe();
+            pitcher = new Pitcher();
+
         }
 
         // member methods (CAN DO)
@@ -31,12 +33,6 @@ namespace LemonadeStand
             Console.WriteLine("Player name:");
             name = Console.ReadLine();
         }
-        public void GoToStore()
-        {
-            Console.WriteLine("Please purchase ingredients and cups to start your lemonade stand.");
-            Console.WriteLine(wallet);
-            store.SellLemons();
 
-        }
     }
 }

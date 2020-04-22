@@ -24,6 +24,13 @@ namespace LemonadeStand
         }
 
         // member methods (CAN DO)
+        public void DisplayPrices()
+        {
+            Console.WriteLine("Price per Lemon: " + pricePerLemon);
+            Console.WriteLine("Price per Sugar Cube: " + pricePerSugarCube);
+            Console.WriteLine("Price per Ice Cube: " + pricePerIceCube);
+            Console.WriteLine("Price per Cup: " + pricePerCup);
+        }
         public void SellLemons(Player player)
         {
             int lemonsToPurchase = UserInterface.GetNumberOfItems("lemons");
