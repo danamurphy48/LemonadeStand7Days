@@ -16,5 +16,9 @@ namespace LemonadeStand
         //constructor
 
         //member variables
+        public void RunGame()
+        {
+
+        }
     }
 }

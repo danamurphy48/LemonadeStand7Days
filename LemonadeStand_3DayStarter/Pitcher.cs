@@ -22,13 +22,21 @@ namespace LemonadeStand
             Console.WriteLine("A pitcher holds 10 cups of lemonade.");
         }
         //member methods
-        public void PourPitcher()
+        public void MakePitcher(Player player, Recipe recipe)
         {
-            for (int i = 0; i < 10; i--)
+            if(player.inventory.lemons.Count >= recipe.amountOfLemons)
             {
-                int cupsLeftInPitcher = i;
+                player.inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
             }
+            
         }
+        //public void PourPitcher()
+        //{
+        //    for (int i = 10; i > 0; i--)
+        //    {
+        //        int cupsLeftInPitcher = i;
+        //    }
+        //}
         //need method to refill pitcher based on current inventory
         //Or do I need to think about this like 1 pitcher = 3 lemons + 3 ice + 3 sugar + 10 cups
         //Do I need to set this limit?

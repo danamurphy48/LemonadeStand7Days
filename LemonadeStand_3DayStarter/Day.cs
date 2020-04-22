@@ -14,6 +14,8 @@ namespace LemonadeStand
         //public List<int> dayOfGame;
         private int dayOfGame;
         public int numberOfCustomers; //necessary or can I take out of customers List?
+        private int currentCustomerCount;
+        private int maximumCustomerCount;
 
         //constructor
         public Day()
@@ -51,7 +53,9 @@ namespace LemonadeStand
         }
         public void FilterCustomers()
         {
-
+            //int currentCustomerCount;
+            //int maximumCustomerCount;
+            //numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;    //seems unnecessary
         }
         public void FilterCustomersByPrice(double pricePerCup)
         {
@@ -67,7 +71,7 @@ namespace LemonadeStand
             }
             
         }
-        public void FilterCustomersByWeatherCondition(Weather weather) //make a bool?
+        public void FilterCustomersByWeatherCondition(Weather weather) //make a bool?  Fix
         {
             int numberOfCustomers = 100;
             int currentCustomerCount;
@@ -92,12 +96,12 @@ namespace LemonadeStand
                 numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
             }
         }
-        public void FilterCustomersByWeatherTemperature(Weather weather, int numnberOfCustomers)//from weather condition filter
+        public void FilterCustomersByWeatherTemperature(Weather weather, int numberOfCustomers)//from weather condition filter
         {
             if (weather.temperature <= 59) //want 40% of above customer count
             {
                 
-                numberOfCustomers = (currentCustomerCount / maximumCustomerCount);
+                currentCustomerCount = (numberOfCustomers / maximumCustomerCount);
                 
             }
         }
@@ -135,13 +139,14 @@ namespace LemonadeStand
             }
             return true;
         }
-        public void CustomersPurchaseLemonade(Player player, double pricePerCup, Weather weather) //use a switch case or if else like RPSLP
+        public void CustomersPurchaseLemonade(Player player, double pricePerCup, Pitcher pitcher, Weather weather) //use a switch case or if else like RPSLP
         {
             foreach(Customer customer in customers)
             {
                 if (customer.BuyLemonade())
                 {
                     player.wallet.Money += pricePerCup;
+                    pitcher.cupsLeftInPitcher--; //or does this need to be -- to cup inventory
                 }
             }
             //if (weather.condition == "Cloudy")

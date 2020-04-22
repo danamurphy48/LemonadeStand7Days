@@ -23,23 +23,28 @@ namespace LemonadeStand
         //member methods (CAN DO)
         public void PopulateCustomerNames() //unnecessary?
         {
-            names.Add("Marco Polo");
-            names.Add("Princess Leia");
-            names.Add("Amelia Earhart");
-            names.Add("Darth Siddius");
-            names.Add("Obi Wan Kenobi");
-            names.Add("Padme Amidala");
-            names.Add("Bill Gates");
-            names.Add("Melinda Gates");
-            //for (int i = 0; i < 100; i++) //can you just add names like customer1++
-            //{
-            //    name = {$"{"customer"} + {i}"};
-            //    names.Add(name);
-            //}
+            //names.Add("Marco Polo");
+            //names.Add("Princess Leia");
+            //names.Add("Amelia Earhart");
+            //names.Add("Darth Siddius");
+            //names.Add("Obi Wan Kenobi");
+            //names.Add("Padme Amidala");
+            //names.Add("Bill Gates");
+            //names.Add("Melinda Gates");
+            for (int i = 0; i < 100; i++) //can you just add names like customer1++: this does work
+            {
+                name = "customer" + i;  //probably don't need the +i because they're indexed
+                names.Add(name);
+            }
         }
         //have customer preferences determined by randomization
-        public bool BuyLemonade()
+        public bool BuyLemonade(Pitcher pitcher, Player player, double pricePerCup)
         {
+            //if a customer buys lemonade then the following needs to happen:
+            pitcher.cupsLeftInPitcher--;
+            player.wallet.Money += pricePerCup;
+            //pitcher amountofcups decreases by one
+            //wallet cash amount increases by pricepercup
             return true;
         }
 

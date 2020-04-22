@@ -17,10 +17,10 @@ namespace LemonadeStand
         //constructor
         public Recipe()
         {
-
+            //hard code or cw
         }
         //member methods
 
-        //recipe limit to 9 ingredients
+
     }
 }
