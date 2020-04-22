@@ -12,6 +12,8 @@ namespace LemonadeStand
         private List<string> names;
         public string name;
         public int buyingMultiplier;
+        public int conditionPreference;
+        public int temperaturePreference;
 
         //constructor (SPAWNER)
         public Customer()

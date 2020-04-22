@@ -39,17 +39,17 @@ namespace LemonadeStand
         {
             for (int i = 0; i < 6; i++)
             {
-                Console.WriteLine("Day" + i);
+                Console.WriteLine("Day " + i);
             }
         }
         public void Forecast()
         {
 
         }
-        public void CreateCustomers(double pricePerCup)
-        {
+        //public void CreateCustomers(double pricePerCup)
+        //{
 
-        }
+        //}
         public void PopulateCustomers()
         {
             for (int i = 0; i < numberOfCustomers; i++)
@@ -64,86 +64,65 @@ namespace LemonadeStand
             //int maximumCustomerCount;
             //numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;    //seems unnecessary
         }
-        public bool FilterCustomerPreference(Weather weather, Customer customer)
+        public int FilterCustomerPreference(Weather weather, Customer customer) //could I do customer.SetConditions();
         {         
             Random random = new Random();
             int randomWeather = random.Next(0, 2);
             customer.conditionPreference = weather.condition[randomWeather];
-            customer.temperaturePreference = weather.temperature[randomWeather];
 
             customer.buyingMultiplier = conditionMultiplier + temperatureMultiplier;
             
             //foreach(Customer customer in customers)
             if(customer.buyingMultiplier >= 4)
-                {
-                    customer.BuyLemonade();
-                }
+            {
+                customer.BuyLemonade(Player player; Pitcher pitcher; double pricePerCup);// error bc BuyLemonade has parameters and currently not supplying args when calling method
+            }
 
             if(weather.condition == "Sunny" && customer.conditionPreference == "Sunny")
-                {
-                    conditionMultiplier = 3;
-                }
-            else if(weather.condition == "cloudy")
-                {
-                    conditionMultiplier = 2;
-                }
+            {
+                conditionMultiplier = 3;
+            }
+            else if(weather.condition == "Cloudy")
+            {
+                conditionMultiplier = 2;
+            }
             else
-                {
-                    conditionMultiplier = 1;
-                }
- 
+            {
+                conditionMultiplier = 1;
+            }
             return conditionMultiplier + temperatureMultiplier;
         }
-
-        //public void FilterCustomersByPrice(double pricePerCup)
-        //{
-        //    int numberOfCustomers = 0;
-        //    if (pricePerCup > 1.00)
-        //    {
-        //        numberOfCustomers = 30;
-                
-        //    }
-        //    else if (pricePerCup <= 1.00)
-        //    {
-        //        numberOfCustomers = 50;
-        //    }
-            
-        //}
-        public void FilterCustomersByWeatherCondition(Weather weather) //make a bool?  Fix
+        public void FilterCustomersByTemperature(Weather weather, Customer customer)   //could I do customer.SetTemperature();
         {
-            int numberOfCustomers = 100;
-            int currentCustomerCount;
-            int maximumCustomerCount;
-            if (weather.condition == "Sunny")
-            {
-                maximumCustomerCount = 100;
-                currentCustomerCount = 100;
-                numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+            Random random = new Random();
+            int randomWeather = random.Next(55, 100);
+            customer.temperaturePreference = weather.temperature[randomWeather];
 
-            }
-            else if (weather.condition == "Cloudy")
+            if (weather.temperature <=59 && customer.temperaturePreference <=59)
             {
-                maximumCustomerCount = 100;
-                currentCustomerCount = 75;
-                numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+                temperatureMultiplier = 3;
             }
-            else if (weather.condition == "Rainy")
+            else
             {
-                maximumCustomerCount = 100;
-                currentCustomerCount = 50;
-                numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+                temperatureMultiplier = 0;
+                //return false;
+            }
+            if (weather.temperature <= 100 && customer.temperaturePreference <= 100)
+            {
+                temperatureMultiplier = 3;
+            }
+            else if (weather.temperature <=100 && customer.temperaturePreference >=75)
+            {
+                temperatureMultiplier = 2;
+            }
+            if (weather.temperature >=75 && customer.temperaturePreference < 75)
+            {
+                temperatureMultiplier = 0;
             }
         }
-        public void FilterCustomersByWeatherTemperature(Weather weather, int numberOfCustomers)//from weather condition filter
-        {
-            if (weather.temperature <= 59) //want 40% of above customer count
-            {
-                
-                currentCustomerCount = (numberOfCustomers / maximumCustomerCount);
-                
-            }
-        }
-        public void ChooseToBuy(Player player, double pricePerCup, Weather weather) //make variables of pricing, temp, and condition? to control customer flow
+
+
+        public void ChooseToBuy(Player player, double pricePerCup) //make variables of pricing, temp, and condition? to control customer flow
         {//while loop? should this be public void?
             numberOfCustomers = 100;
             bool customerBuy = true;
@@ -196,3 +175,51 @@ namespace LemonadeStand
         }
     }
 }
+        //public void FilterCustomersByPrice(double pricePerCup)
+        //{
+        //    int numberOfCustomers = 0;
+        //    if (pricePerCup > 1.00)
+        //    {
+        //        numberOfCustomers = 30;
+                
+        //    }
+        //    else if (pricePerCup <= 1.00)
+        //    {
+        //        numberOfCustomers = 50;
+        //    }
+            
+        //}
+        //public void FilterCustomersByWeatherCondition(Weather weather) //make a bool?  Fix
+        //{
+        //    int numberOfCustomers = 100;
+        //    int currentCustomerCount;
+        //    int maximumCustomerCount;
+        //    if (weather.condition == "Sunny")
+        //    {
+        //        maximumCustomerCount = 100;
+        //        currentCustomerCount = 100;
+        //        numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+
+        //    }
+        //    else if (weather.condition == "Cloudy")
+        //    {
+        //        maximumCustomerCount = 100;
+        //        currentCustomerCount = 75;
+        //        numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+        //    }
+        //    else if (weather.condition == "Rainy")
+        //    {
+        //        maximumCustomerCount = 100;
+        //        currentCustomerCount = 50;
+        //        numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
+        //    }
+        //}
+        //public void FilterCustomersByWeatherTemperature(Weather weather, int numberOfCustomers)//from weather condition filter
+        //{
+        //    if (weather.temperature <= 59) //want 40% of above customer count
+        //    {
+                
+        //        currentCustomerCount = (numberOfCustomers / maximumCustomerCount);
+                
+        //    }
+        //}
