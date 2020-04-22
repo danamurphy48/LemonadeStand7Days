@@ -34,6 +34,8 @@ namespace LemonadeStand
             //dayOfGame = new List<int>();
             DayOfGame();
             numberOfCustomers = 100;
+            player = new Player();
+
         }
         //member methods
         public void DayOfGame()
@@ -93,7 +95,7 @@ namespace LemonadeStand
             }
             return conditionMultiplier + temperatureMultiplier;
         }
-        public int FilterCustomersByTemperature(Weather weather, Customer customer)   //could I do customer.SetTemperature();
+        public int FilterCustomersByTemperature(Weather weather, Customer customer) //tweak numbers for this
         {
             Random random = new Random();
             int randomWeather = random.Next(55, 100);

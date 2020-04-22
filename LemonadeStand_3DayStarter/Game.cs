@@ -14,6 +14,7 @@ namespace LemonadeStand
         private int currentDay;
         private Store store;
 
+
         //constructor
         public Game()
         {
@@ -21,6 +22,7 @@ namespace LemonadeStand
             days = new List<Day>();
             currentDay = 0;
             store = new Store();
+
         }
         //member variables
         public void RunGame()
@@ -28,6 +30,8 @@ namespace LemonadeStand
             DisplayRules();
             player.PickName();
             GoToStore();
+            //DisplayInventory(); have this in UserInterface?
+            CraftRecipe();
         }
         public void DisplayRules()
         {
@@ -41,9 +45,16 @@ namespace LemonadeStand
         public void GoToStore()
         {
             Console.WriteLine("Please purchase ingredients and cups to start your lemonade stand.");
-            Console.WriteLine(player.wallet);
+            Console.WriteLine("You currently have " + player.wallet);
+            store.DisplayPrices();
             store.SellLemons(player);
-
+            store.SellSugarCubes(player);
+            store.SellIceCubes(player);
+            store.SellCups(player);
+        }
+        public void CraftRecipe()
+        {
+            player.recipe.AskRecipe();
         }
         public void DisplayEarnings()
         {
