@@ -13,9 +13,10 @@ namespace LemonadeStand
         public List<Customer> customers;
         //public List<int> dayOfGame;
         private int dayOfGame;
-        public int numberOfCustomers; //necessary or can I take out of customers List?
-        private int currentCustomerCount;
-        private int maximumCustomerCount;
+        //public int numberOfCustomers; //necessary or can I take out of customers List?
+        //private int currentCustomerCount;
+        //private int maximumCustomerCount;
+        Random random = new Random();
 
         //constructor
         public Day()
@@ -25,7 +26,7 @@ namespace LemonadeStand
             customers = new List<Customer>();
             //dayOfGame = new List<int>();
             DayOfGame();
-            numberOfCustomers = 100;
+            //numberOfCustomers = 100;
         }
         //member methods
         public void DayOfGame()
@@ -57,6 +58,40 @@ namespace LemonadeStand
             //int maximumCustomerCount;
             //numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;    //seems unnecessary
         }
+        public bool FilterCustomerPreference(Weather weather, Customer customer, double pricePerCup)
+        {         
+            Random random = new Random();
+            int randomWeather = random.Next(0, 2);
+            customer.conditionPreference = weather.condition[randomWeather];
+            int buying = conditionMultiplier + priceMultiplier + temperatureMultiplier;
+            
+            if(buying >= 4)
+                {
+                    return true;
+                }
+            if(weather.condition == "Sunny" && customer.conditionPreference == "Sunny")
+                {
+                    conditionMultiplier = 3;
+                }
+            else if(weather.condition == "cloudy")
+                {
+                    conditionMultiplier = 2;
+                }
+            else
+                {
+                    conditionMultiplier = 1;
+                }
+            if(customer.pricePreference <= pricePerCup)
+                {
+                    priceMultipler = 2;
+                }
+            else
+                {
+                    priceMultiplier = 0;
+                }
+            return priceMultiplier + conditionMultiplier + temperatureMultiplier;
+        }
+
         public void FilterCustomersByPrice(double pricePerCup)
         {
             int numberOfCustomers = 0;

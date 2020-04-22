@@ -38,13 +38,13 @@ namespace LemonadeStand
             }
         }
         //have customer preferences determined by randomization
-        public bool BuyLemonade(Pitcher pitcher, Player player, double pricePerCup)
+        public bool BuyLemonade()
         {
-            //if a customer buys lemonade then the following needs to happen:
-            pitcher.cupsLeftInPitcher--;
-            player.wallet.Money += pricePerCup;
-            //pitcher amountofcups decreases by one
-            //wallet cash amount increases by pricepercup
+            ////if a customer buys lemonade then the following needs to happen:
+            //pitcher.cupsLeftInPitcher--;
+            //player.wallet.Money += pricePerCup; this logic happens in Day
+            ////pitcher amountofcups decreases by one
+            ////wallet cash amount increases by pricepercup
             return true;
         }
 

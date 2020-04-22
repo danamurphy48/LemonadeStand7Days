@@ -8,18 +8,22 @@ namespace LemonadeStand
 {
     class Recipe
     {
-        //member variables
+        //member variables (HAS A)
         public int amountOfLemons;
         public int amountOfSugarCubes;
         public int amountOfIceCubes;
-        public double pricePerCup;
+        public double pricePerCup;  //shouldn't this be int amountOfCups?
 
-        //constructor
+        //constructor (SPAWNER)
         public Recipe()
         {
-            //hard code or cw
+            amountOfIceCubes = 3;
+            amountOfLemons = 3;
+            amountOfSugarCubes = 3;
+            pricePerCup = .75;
         }
-        //member methods
+        //member methods (CAN DO)
+        //ask user to set price per cup and amount of ingredients per pitcher?
 
 
     }
