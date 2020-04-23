@@ -14,27 +14,28 @@ namespace LemonadeStand
         private int currentDay;
         private Store store;
 
-
         //constructor
         public Game()
         {
             player = new Player();
             days = new List<Day>();
-            currentDay = 0;
+            currentDay = 1;
             store = new Store();
-
         }
         //member methods
         public void RunGame()
         {
             DisplayRules();
+            PopulateDay();
             player.PickName();
             days.weather.DisplayWeather();
+            DisplayForecast();
             GoToStore();
             //DisplayInventory(); have this in UserInterface?
             CraftRecipe();
             CraftPitcher();
             SellLemonade();
+            DisplayEarnings();
         }
         public void DisplayRules()
         {
@@ -44,6 +45,17 @@ namespace LemonadeStand
             Console.WriteLine("If the price is over $1.00 no customers will buy lemonade regardless of the weather.");
             Console.WriteLine("If the weather is poor, then fewer customers will be interested purchasing lemonade.");
             Console.WriteLine("At the end of each day, you will see your gross and net income.");
+        }
+        public void PopulateDay()
+        {
+            Day day = new Day();
+            days.Add("Day 1");
+            days.Add("Day 2");
+            days.Add("Day 3");
+            days.Add("Day 4");
+            days.Add("Day 5");
+            days.Add("Day 6");
+            days.Add("Day 7");
         }
         public void GoToStore()
         {
@@ -59,17 +71,18 @@ namespace LemonadeStand
         {
             player.recipe.AskRecipe();
         }
-        public void CraftPitcher()
+        public void CraftPitcher(Player player, Recipe recipe)
         {
-            player.MakePitcher();
+            MakePitcher(player.recipe);
         }
         public void SellLemonade()
         {
-
+            day.customer.PopulateCustomerNames();
+            day[1].PopulateCustomers();
         }
         public void DisplayEarnings()
         {
-
+            
         }
     }
 }

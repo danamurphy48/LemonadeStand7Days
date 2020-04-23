@@ -40,9 +40,10 @@ namespace LemonadeStand
         //member methods
         public void DayOfGame()
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 1; i < 7; i++)
             {
                 Console.WriteLine("Day " + i);
+
             }
         }
 
@@ -157,7 +158,11 @@ namespace LemonadeStand
                 numberOfCustomers = 100;
             }
         }
-        public void CustomersPurchaseLemonade(Player player, double pricePerCup, Pitcher pitcher, Weather weather) //use a switch case or if else like RPSLP
+        public void CalculateCustomerDemand()
+        {
+            
+        }
+        public void CustomersPurchaseLemonade(Player player, double pricePerCup, Pitcher pitcher, Weather weather)
         {
             //Two paths you can take:
             //1. customers represents the filtered down customers who will buy (no need for conditional here, just have them buy)
