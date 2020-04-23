@@ -33,6 +33,24 @@ namespace LemonadeStand
             Console.WriteLine("Player name:");
             name = Console.ReadLine();
         }
-
+        public void MakePitcher(Recipe recipe)
+        {
+            if (inventory.lemons.Count >= recipe.amountOfLemons)
+            {
+                inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
+            }
+            if (inventory.sugarCubes.Count >= recipe.amountOfSugarCubes)
+            {
+                inventory.lemons.RemoveRange(0, recipe.amountOfSugarCubes);
+            }
+            if (inventory.iceCubes.Count >= recipe.amountOfIceCubes)
+            {
+                inventory.iceCubes.RemoveRange(0, recipe.amountOfIceCubes);
+            }
+            if (inventory.cups.Count >= recipe.amountOfCups)
+            {
+                inventory.cups.RemoveRange(0, recipe.amountOfCups);
+            }
+        }
     }
 }

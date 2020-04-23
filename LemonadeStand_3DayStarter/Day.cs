@@ -45,10 +45,7 @@ namespace LemonadeStand
                 Console.WriteLine("Day " + i);
             }
         }
-        public void Forecast()
-        {
 
-        }
         //public void CreateCustomers(double pricePerCup)
         //{
 

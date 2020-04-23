@@ -27,6 +27,7 @@ namespace LemonadeStand
         //member methods (CAN DO)
         public void AskRecipe()
         {
+            Console.WriteLine("One pitcher pours 10 cups.");
             Console.WriteLine("Please choose how many sugar cubes you want in a pitcher:");
             int amountOfSugarCubes = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please choose how many lemons you want in a pitcher:");
@@ -36,7 +37,7 @@ namespace LemonadeStand
             Console.WriteLine("Please choose the price per cup of lemonade:");
             double pricePerCup = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("One pitcher pours 10 cups.");
+
         }
 
 

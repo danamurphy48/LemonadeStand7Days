@@ -26,15 +26,15 @@ namespace LemonadeStand
         //member methods
         public void MakePitcher(Player player, Recipe recipe)
         {
-            if(player.inventory.lemons.Count >= recipe.amountOfLemons)
+            if (player.inventory.lemons.Count >= recipe.amountOfLemons)
             {
                 player.inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
             }
-            if(player.inventory.sugarCubes.Count >= recipe.amountOfSugarCubes)
+            if (player.inventory.sugarCubes.Count >= recipe.amountOfSugarCubes)
             {
                 player.inventory.lemons.RemoveRange(0, recipe.amountOfSugarCubes);
             }
-            if(player.inventory.iceCubes.Count >= recipe.amountOfIceCubes)
+            if (player.inventory.iceCubes.Count >= recipe.amountOfIceCubes)
             {
                 player.inventory.iceCubes.RemoveRange(0, recipe.amountOfIceCubes);
             }
@@ -43,20 +43,5 @@ namespace LemonadeStand
                 player.inventory.cups.RemoveRange(0, recipe.amountOfCups);
             }
         }
-
-
-        //public void PourPitcher()
-        //{
-        //    for (int i = 10; i > 0; i--)
-        //    {
-        //        int cupsLeftInPitcher = i;
-        //    }
-        //}
-        //need method to refill pitcher based on current inventory
-        //Or do I need to think about this like 1 pitcher = 3 lemons + 3 ice + 3 sugar + 10 cups
-        //Do I need to set this limit?
     }
 }
-            //Pitcher pitcher = new Pitcher();
-            //pitcher = amountOfLemons + amountOfSugarCubes + amountOfIceCubes;
-            // = 9;

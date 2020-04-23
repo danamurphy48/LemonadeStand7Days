@@ -24,14 +24,17 @@ namespace LemonadeStand
             store = new Store();
 
         }
-        //member variables
+        //member methods
         public void RunGame()
         {
             DisplayRules();
             player.PickName();
+            days.weather.DisplayWeather();
             GoToStore();
             //DisplayInventory(); have this in UserInterface?
             CraftRecipe();
+            CraftPitcher();
+            SellLemonade();
         }
         public void DisplayRules()
         {
@@ -55,6 +58,14 @@ namespace LemonadeStand
         public void CraftRecipe()
         {
             player.recipe.AskRecipe();
+        }
+        public void CraftPitcher()
+        {
+            player.MakePitcher();
+        }
+        public void SellLemonade()
+        {
+
         }
         public void DisplayEarnings()
         {

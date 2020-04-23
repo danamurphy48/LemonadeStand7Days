@@ -21,11 +21,14 @@ namespace LemonadeStand
             PopulateWeatherConditions();
             SetCondition();
             SetTemperature();
+            DisplayCurrentWeather();
+            DisplayForecast();
         }
         //member methods (CAN DO)
         public void DisplayCurrentWeather()
         {
-            Console.WriteLine($"{condition} & {temperature}");
+            //string currentWeather = condition + " " + temperature + "F";
+            Console.WriteLine($"Current weather: {condition} & {temperature}");
             //Console.WriteLine(condition + " " + temperature);
         }
 
@@ -44,6 +47,13 @@ namespace LemonadeStand
             int randomNumber = random.Next(0, 2);
             condition = weatherConditions[randomNumber];
         }
+        public void DisplayForecast()
+        {
+            PopulateWeatherConditions();
+            SetCondition();
+            SetTemperature();
+            Console.WriteLine($"Weather forecast: {condition} {temperature}F");
 
+        }
     }
 }
