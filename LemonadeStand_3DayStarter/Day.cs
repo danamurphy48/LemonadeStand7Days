@@ -13,7 +13,7 @@ namespace LemonadeStand
         public List<Customer> customers;
         //public List<int> dayOfGame;
         private int dayOfGame;
-        public int numberOfCustomers; //necessary or can I take out of customers List?
+        public int numberOfCustomers;
         private int conditionPreference;
         private int customerConditionPreference;
         private int temperaturePreference;
@@ -21,36 +21,24 @@ namespace LemonadeStand
         private int conditionMultiplier;
         private int temperatureMultiplier;
         public Player player;
-        //private int currentCustomerCount;
-        //private int maximumCustomerCount;
         Random random = new Random();
 
         //constructor
         public Day()
         {
-            //DisplayCurrentWeather();
+
             weather = new Weather();
             customers = new List<Customer>();
-            //dayOfGame = new List<int>();
-            DayOfGame();
+
+
             numberOfCustomers = 100;
             player = new Player();
 
         }
         //member methods
-        public void DayOfGame()
-        {
-            for (int i = 1; i < 7; i++)
-            {
-                Console.WriteLine("Day " + i);
 
-            }
-        }
 
-        //public void CreateCustomers(double pricePerCup)
-        //{
 
-        //}
         public void PopulateCustomers()
         {
             for (int i = 0; i < numberOfCustomers; i++)
@@ -76,7 +64,7 @@ namespace LemonadeStand
             //foreach(Customer customer in customers)
             if(customer.buyingMultiplier >= 4)
             {
-                customer.BuyLemonade(Player player; Pitcher pitcher; double pricePerCup);
+               CustomersPurchaseLemonade(player, );
             }
 
             if(weather.condition == "Sunny" && customer.conditionPreference.ToString() == "Sunny")
@@ -93,7 +81,7 @@ namespace LemonadeStand
             }
             return conditionMultiplier + temperatureMultiplier;
         }
-        public int FilterCustomersByTemperature(Weather weather, Customer customer) //tweak numbers for this
+        public int FilterCustomersByTemperature(Weather weather, Customer customer)
         {
             Random random = new Random();
             int randomWeather = random.Next(55, 100);
@@ -124,8 +112,8 @@ namespace LemonadeStand
         }
 
 
-        public void ChooseToBuy(Player player, double pricePerCup) //make variables of pricing, temp, and condition? to control customer flow
-        {//while loop? should this be public void?
+        public void ChooseToBuy(Player player, double pricePerCup)
+        {
             numberOfCustomers = 100;
             bool customerBuy = true;
             if (pricePerCup > 1.00)
@@ -160,7 +148,7 @@ namespace LemonadeStand
         }
         public void CalculateCustomerDemand()
         {
-            
+            numberOfCustomers--;
         }
         public void CustomersPurchaseLemonade(Player player, double pricePerCup, Pitcher pitcher, Weather weather)
         {
@@ -181,51 +169,3 @@ namespace LemonadeStand
         }
     }
 }
-        //public void FilterCustomersByPrice(double pricePerCup)
-        //{
-        //    int numberOfCustomers = 0;
-        //    if (pricePerCup > 1.00)
-        //    {
-        //        numberOfCustomers = 30;
-                
-        //    }
-        //    else if (pricePerCup <= 1.00)
-        //    {
-        //        numberOfCustomers = 50;
-        //    }
-            
-        //}
-        //public void FilterCustomersByWeatherCondition(Weather weather) //make a bool?  Fix
-        //{
-        //    int numberOfCustomers = 100;
-        //    int currentCustomerCount;
-        //    int maximumCustomerCount;
-        //    if (weather.condition == "Sunny")
-        //    {
-        //        maximumCustomerCount = 100;
-        //        currentCustomerCount = 100;
-        //        numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
-
-        //    }
-        //    else if (weather.condition == "Cloudy")
-        //    {
-        //        maximumCustomerCount = 100;
-        //        currentCustomerCount = 75;
-        //        numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
-        //    }
-        //    else if (weather.condition == "Rainy")
-        //    {
-        //        maximumCustomerCount = 100;
-        //        currentCustomerCount = 50;
-        //        numberOfCustomers = (currentCustomerCount / maximumCustomerCount) * 100;
-        //    }
-        //}
-        //public void FilterCustomersByWeatherTemperature(Weather weather, int numberOfCustomers)//from weather condition filter
-        //{
-        //    if (weather.temperature <= 59) //want 40% of above customer count
-        //    {
-                
-        //        currentCustomerCount = (numberOfCustomers / maximumCustomerCount);
-                
-        //    }
-        //}

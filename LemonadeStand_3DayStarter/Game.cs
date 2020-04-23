@@ -19,6 +19,7 @@ namespace LemonadeStand
         {
             player = new Player();
             days = new List<Day>();
+            PopulateDay();
             currentDay = 1;
             store = new Store();
         }
@@ -48,14 +49,14 @@ namespace LemonadeStand
         }
         public void PopulateDay()
         {
-            Day day = new Day();
-            days.Add("Day 1");
-            days.Add("Day 2");
-            days.Add("Day 3");
-            days.Add("Day 4");
-            days.Add("Day 5");
-            days.Add("Day 6");
-            days.Add("Day 7");
+            
+            for (int i = 0; i < 7; i++)
+            {
+                Day day = new Day();
+                days.Add(day);
+
+            }
+
         }
         public void GoToStore()
         {
@@ -77,12 +78,15 @@ namespace LemonadeStand
         }
         public void SellLemonade()
         {
-            day.customer.PopulateCustomerNames();
-            day[1].PopulateCustomers();
+            days.customer.PopulateCustomerNames();
+            days[1].PopulateCustomers();
         }
-        public void DisplayEarnings()
+        public void DisplayEarnings(double pricePerCup, Customer customer)
         {
-            
+            int cashEarned;
+            cashEarned = player.wallet + pricePerCup * customer.BuyLemonade();
+            Console.WriteLine("You made " + cashEarned + " today");
+
         }
     }
 }
