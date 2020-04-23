@@ -52,7 +52,7 @@ namespace LemonadeStand
             PopulateWeatherConditions();
             SetCondition();
             SetTemperature();
-            Console.WriteLine($"Weather forecast: {condition} {temperature}F");
+            Console.WriteLine($"Weather forecast: {condition} & {temperature}F");
 
         }
     }

@@ -21,7 +21,7 @@ namespace LemonadeStand
         private int conditionMultiplier;
         private int temperatureMultiplier;
         public Player player;
-        Random random = new Random();
+        private Random random;
 
         //constructor
         public Day()
@@ -30,15 +30,13 @@ namespace LemonadeStand
             weather = new Weather();
             customers = new List<Customer>();
 
-
             numberOfCustomers = 100;
-            player = new Player();
+            PopulateCustomers();
 
+            player = new Player();
+            Random random = new Random();
         }
         //member methods
-
-
-
         public void PopulateCustomers()
         {
             for (int i = 0; i < numberOfCustomers; i++)
@@ -62,10 +60,10 @@ namespace LemonadeStand
             customer.buyingMultiplier = conditionMultiplier + temperatureMultiplier;
             
             //foreach(Customer customer in customers)
-            if(customer.buyingMultiplier >= 4)
-            {
-               CustomersPurchaseLemonade(player, );
-            }
+            //if(customer.buyingMultiplier >= 4)
+            //{
+            //   CustomersPurchaseLemonade(player, pricePerCup, pitcher, weather);
+            //}
 
             if(weather.condition == "Sunny" && customer.conditionPreference.ToString() == "Sunny")
             {
@@ -78,6 +76,10 @@ namespace LemonadeStand
             else
             {
                 conditionMultiplier = 1;
+            }
+            if (weather.condition == customer.conditionPreference.ToString())
+            {
+                conditionMultiplier = 3;
             }
             return conditionMultiplier + temperatureMultiplier;
         }

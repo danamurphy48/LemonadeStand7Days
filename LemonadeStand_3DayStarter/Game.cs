@@ -17,6 +17,7 @@ namespace LemonadeStand
         //constructor
         public Game()
         {
+            RunGame();
             player = new Player();
             days = new List<Day>();
             PopulateDay();
@@ -29,14 +30,14 @@ namespace LemonadeStand
             DisplayRules();
             PopulateDay();
             player.PickName();
-            days.weather.DisplayWeather();
-            DisplayForecast();
+           // days.weather.DisplayWeather();
+          //  days.DisplayForecast();
             GoToStore();
             //DisplayInventory(); have this in UserInterface?
             CraftRecipe();
-            CraftPitcher();
-            SellLemonade();
-            DisplayEarnings();
+          //  CraftPitcher();
+            //SellLemonade();
+            //DisplayEarnings();
         }
         public void DisplayRules()
         {
@@ -54,7 +55,6 @@ namespace LemonadeStand
             {
                 Day day = new Day();
                 days.Add(day);
-
             }
 
         }
@@ -72,20 +72,20 @@ namespace LemonadeStand
         {
             player.recipe.AskRecipe();
         }
-        public void CraftPitcher(Player player, Recipe recipe)
+        //public void CraftPitcher(Player player, Recipe recipe)
+        //{
+        //    MakePitcher(player.recipe);
+        //}
+        //public void SellLemonade()
+        //{
+        //    days.customer.PopulateCustomerNames();
+        //    days[1].PopulateCustomers();
+        //}
+        public void DisplayEarnings(Player player, double pricePerCup/*, Customer customer*/)
         {
-            MakePitcher(player.recipe);
-        }
-        public void SellLemonade()
-        {
-            days.customer.PopulateCustomerNames();
-            days[1].PopulateCustomers();
-        }
-        public void DisplayEarnings(double pricePerCup, Customer customer)
-        {
-            int cashEarned;
-            cashEarned = player.wallet + pricePerCup * customer.BuyLemonade();
-            Console.WriteLine("You made " + cashEarned + " today");
+     //       int cashEarned;
+    //        cashEarned = player.wallet.Money + pricePerCup;// * //customer.BuyLemonade();
+     //       Console.WriteLine("You made " + cashEarned + " today");
 
         }
     }
