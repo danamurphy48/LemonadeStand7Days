@@ -30,7 +30,7 @@ namespace LemonadeStand
             weather = new Weather();
             customers = new List<Customer>();
 
-            numberOfCustomers = 100;
+            numberOfCustomers = 100; 
             PopulateCustomers();
 
             player = new Player();
@@ -69,7 +69,7 @@ namespace LemonadeStand
             {
                 conditionMultiplier = 3;
             }
-            else if(weather.condition == "Cloudy")
+            else if(weather.condition == "Cloudy" && (customer.conditionPreference.ToString() == "Sunny" || customer.conditionPreference.ToString() == "Rainy"))
             {
                 conditionMultiplier = 2;
             }
